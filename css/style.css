@@ -1,10 +1,68 @@
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: 1px solid black;
 }
 
-body{
+body {
   width: 100vw;
   height: 100vh;
 }
+
+.background {
+    background-color: rgba(255, 255, 255, 1);
+    background: linear-gradient(
+      100deg,
+      rgb(12.11, 22.41, 76.5) 0%,
+      rgb(25.23, 10.91, 34) 100%
+    );
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.textBox {
+    display: inline-flex;
+    flex-direction: column;
+    height: 130px;
+    gap: 16px;
+    text-align: right;
+    justify-content: flex-end; 
+    align-items: flex-end;
+    position: absolute;
+    top: 40px; 
+    right: 40px; 
+  }
+  
+  .text {
+    font-family: "Secular One", Helvetica;
+    color: #ffffff;
+    font-size: 60px;
+    width: 625px;
+    letter-spacing: 5.5px;
+  }
+  
+  .text-2 {
+    font-family: "Lora", Helvetica;
+    font-size: 24px;
+    color: #ffcf29;
+    letter-spacing: 14.5px;
+    width: 625px;
+  }
+  
+  .planets {
+    display: flex;
+    width: 100vw;
+    height: 80vh;
+    align-self: center;
+    align-items: center;
+  }
+
+  .sun {
+    background: #FFD029;
+    border-radius: 50%;
+    width: 1000px;
+    height: 1000px;
+    margin-left: -935px;
+  }
