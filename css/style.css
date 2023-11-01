@@ -1,38 +1,39 @@
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  border: 1px solid black;
-}
-
-body {
-  width: 100vw;
-  height: 100vh;
-}
-
-.background {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /*border: 1px solid black;*/
+  }
+  
+  body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Dölj överskott om innehållet är större än fönstret */
+  }
+  
+  .background {
     background-color: rgba(255, 255, 255, 1);
     background: linear-gradient(
       100deg,
       rgb(12.11, 22.41, 76.5) 0%,
       rgb(25.23, 10.91, 34) 100%
     );
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
-}
-
-.textBox {
+  }
+  
+  .textBox {
     display: inline-flex;
     flex-direction: column;
     height: 130px;
     gap: 16px;
     text-align: right;
-    justify-content: flex-end; 
+    justify-content: flex-end;
     align-items: flex-end;
     position: absolute;
-    top: 40px; 
-    right: 40px; 
+    top: 40px;
+    right: 40px;
   }
   
   .text {
@@ -51,18 +52,89 @@ body {
     width: 625px;
   }
   
+  @media (max-width: 100%) {
+    .background {
+      max-width: 100%; 
+    }
+  
+    .sun {
+      max-width: 100%;
+    }
+  }
+  
   .planets {
     display: flex;
     width: 100vw;
     height: 80vh;
     align-self: center;
     align-items: center;
+    
   }
-
+  
   .sun {
     background: #FFD029;
+    border: 5px solid #FFD029;
     border-radius: 50%;
-    width: 1000px;
-    height: 1000px;
-    margin-left: -935px;
+    min-width: 1500px;
+    min-height: 1500px;
+    margin-left: -1380px;
+    box-shadow: 0 0 300px rgba(255, 223, 109, 0.35);
+    
+  }
+  .planet {
+    border-radius: 50%;
+    margin-left: 140px;
+  }
+  .mercury {
+    background: #888888;
+    min-width: 14px;
+    min-height: 14px;
+  }
+  .venus {
+    background: #E7CDCD;
+    min-width: 26px;
+    min-height: 26px;
+  }
+  .earth {
+    background: #428ED4;
+    min-width: 28px;
+    min-height: 28px;
+  }
+  .mars {
+    background: #EF5F5F;
+    min-width: 14px;
+    min-height: 14px;
+  }
+  .jupiter {
+    background: #E29468;
+    min-width: 188px;
+    min-height: 188px;
+  }
+  .saturn {
+    background: #C7AA72;
+    width: 144px;
+    height: 144px;
+    display: flex;
+  }
+  .saturnsRing{
+    min-width: 210px;
+    height: 6px;
+    top: 69px;
+    left: -13px;
+    background-color: #ffffff66;
+    border-radius: 110px/5px;
+    transform: rotate(-30deg);
+    margin-left: -30px;
+    align-self: center;
+    
+  }
+  .uranus {
+    background: #C9D4F1;
+    min-width: 66px;
+    min-height: 66px;
+  }
+  .neptune {
+    background: #7A91A7;
+    min-width: 66px;
+    min-height: 66px;
   }
