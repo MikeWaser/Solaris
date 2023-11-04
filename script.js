@@ -18,9 +18,10 @@ async function getData() {
   return data;
 }
 
-// Huvudfunktion som körs när sidan laddas
+// Funktion som körs när sidan laddas
+// Hämta planetinformation från det externa API:et
 async function run() {
-  // Hämta planetinformation från det externa API:et
+
   const planetInformation = await getData();
   console.log(planetInformation);
 
@@ -30,9 +31,10 @@ async function run() {
   const celestialBodies = [...planets, sun];
 
   // Loopa igenom alla himlakroppar (planeter och solen) och sätter en eventlistener på varje
+  // Hämta namnet på den klickade himlakroppen från dess CSS-klass
   celestialBodies.forEach((planet) =>
     planet.addEventListener("click", async () => {
-      // Hämta namnet på den klickade himlakroppen från dess CSS-klass
+      
       const planetName = planet.classList[1] || planet.classList[0];
 
       // Sök efter information om den klickade himlakroppen i den hämtade datan
@@ -40,7 +42,6 @@ async function run() {
         (p) => nameMap[p.name] === planetName
       );
 
-      // Hämta popup-elementet från HTML
       const popup = document.querySelector(".popup");
 
       // Fyll popup-elementet med information om den klickade himlakroppen
@@ -62,7 +63,8 @@ async function run() {
         </div>
       `;
 
-      // Visa popup-elementet genom att ändra dess display-stil till "flex"
+      createStars();
+
       popup.style.display = "flex";
 
       // Sätt en eventlistener på popup-elementet för att stänga det när användaren klickar någonstans
@@ -75,5 +77,17 @@ async function run() {
   );
 }
 
-// Kör huvudfunktionen när sidan laddas
+// Kör funktionen när sidan laddas
 run();
+
+// 
+function createStars() {
+  const popup = document.querySelector(".popup");
+  for (let i = 0; i < 100; i++) {
+    const stars = document.createElement("div");
+    stars.className = "stars";
+    stars.style.left = `${Math.random() * 100}%`;
+    stars.style.top = `${Math.random() * 100}%`;
+    popup.appendChild(stars);
+  }
+}
