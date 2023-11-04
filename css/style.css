@@ -2,67 +2,238 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  border: 1px solid black;
 }
 
 body {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .background {
-    background-color: rgba(255, 255, 255, 1);
-    background: linear-gradient(
-      100deg,
-      rgb(12.11, 22.41, 76.5) 0%,
-      rgb(25.23, 10.91, 34) 100%
-    );
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+  background-color: rgba(255, 255, 255, 1);
+  background: linear-gradient(100deg, #0c164d 0%, #190b22 100%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
 .textBox {
-    display: inline-flex;
-    flex-direction: column;
-    height: 130px;
-    gap: 16px;
-    text-align: right;
-    justify-content: flex-end; 
-    align-items: flex-end;
-    position: absolute;
-    top: 40px; 
-    right: 40px; 
-  }
-  
-  .text {
-    font-family: "Secular One", Helvetica;
-    color: #ffffff;
-    font-size: 60px;
-    width: 625px;
-    letter-spacing: 5.5px;
-  }
-  
-  .text-2 {
-    font-family: "Lora", Helvetica;
-    font-size: 24px;
-    color: #ffcf29;
-    letter-spacing: 14.5px;
-    width: 625px;
-  }
-  
-  .planets {
-    display: flex;
-    width: 100vw;
-    height: 80vh;
-    align-self: center;
-    align-items: center;
-  }
+  display: inline-flex;
+  flex-direction: column;
+  height: 130px;
+  gap: 16px;
+  text-align: right;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
 
-  .sun {
-    background: #FFD029;
-    border-radius: 50%;
-    width: 1000px;
-    height: 1000px;
-    margin-left: -935px;
-  }
+.text {
+  font-family: "Secular One", Helvetica;
+  color: #ffffff;
+  font-size: 60px;
+  width: 625px;
+  letter-spacing: 5.5px;
+}
+
+.text-2 {
+  font-family: "Lora", Helvetica;
+  font-size: 24px;
+  color: #ffcf29;
+  letter-spacing: 14.5px;
+  width: 625px;
+}
+
+.solarSystem {
+  display: flex;
+  width: 100vw;
+  align-self: center;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sun {
+  background: #ffd029;
+  border: 5px solid #ffd029;
+  border-radius: 50%;
+  min-width: 1500px;
+  min-height: 1500px;
+  margin-left: -1380px;
+  box-shadow: 0 0 100px rgba(255, 223, 109, 0.3);
+  cursor: pointer;
+}
+
+.planet {
+  border-radius: 50%;
+  cursor: pointer;
+  display: block;
+}
+
+.mercury {
+  background: #888888;
+  min-width: 14px;
+  min-height: 14px;
+}
+
+.venus {
+  background: #e7cdcd;
+  min-width: 26px;
+  min-height: 26px;
+}
+
+.earth {
+  background: #428ed4;
+  min-width: 28px;
+  min-height: 28px;
+}
+
+.mars {
+  background: #ef5f5f;
+  min-width: 14px;
+  min-height: 14px;
+}
+
+.jupiter {
+  background: #e29468;
+  min-width: 188px;
+  min-height: 188px;
+}
+
+.saturn {
+  background: #c7aa72;
+  width: 144px;
+  height: 144px;
+  display: flex;
+}
+
+.saturnsRing {
+  min-width: 210px;
+  height: 6px;
+  top: 69px;
+  left: -13px;
+  background-color: #ffffff66;
+  border-radius: 110px/5px;
+  transform: rotate(-30deg);
+  margin-left: -30px;
+  align-self: center;
+}
+
+.uranus {
+  background: #c9d4f1;
+  min-width: 66px;
+  min-height: 66px;
+}
+
+.neptune {
+  background: #7a91a7;
+  min-width: 66px;
+  min-height: 66px;
+  margin-right: 3rem;
+}
+
+.popup {
+  background: linear-gradient(90deg, #0c164d 0%, #190b22 100%);
+  color: #ffffff;
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.stars {
+  background-color: #ffffff;
+  width: 0.125rem;
+  height: 0.125rem;
+  position: absolute;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+}
+
+.name {
+  font-family: "Secular One", Helvetica;
+  font-weight: 400;
+  font-size: 60px;
+  letter-spacing: 5.5px;
+  line-height: 60px;
+  display: flex;
+  align-self: flex-start;
+  text-transform: uppercase;
+}
+
+.latinName {
+  font-family: "Lora", Helvetica;
+  font-weight: 400;
+  font-size: 24px;
+  color: #ffcf29;
+  letter-spacing: 14.5px;
+  line-height: 24px;
+  margin: 1rem 0;
+  text-transform: uppercase;
+}
+
+.description {
+  font-family: "Roboto Condensed", Helvetica;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 0px;
+  line-height: 30.6px;
+  margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ffffff2a;
+}
+
+.moons {
+  min-width: 640px;
+  border-top: 1px solid #ffffff2a;
+}
+
+.closeButton {
+  font-size: 3rem;
+  cursor: pointer;
+  background: none;
+  color: #ffffff;
+  border: none;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 50%;
+  background-color: none;
+}
+
+.closeButton:hover {
+  background-color: rgba(120, 124, 213, 0.5);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.info {
+  font-family: "Roboto Condensed", Helvetica;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 3px;
+  line-height: 18px;
+  display: flex;
+  align-self: start;
+  padding: 1rem 0;
+  width: 25rem;
+}
+
+.group {
+  display: flex;
+}
