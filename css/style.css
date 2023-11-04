@@ -187,8 +187,6 @@ body {
   text-transform: uppercase;
 }
 .description {
-  background: #7c8dee;
-
   grid-column: 3 / 5;
   grid-row: 5 / auto;
   font-family: "Roboto Condensed", Helvetica;
