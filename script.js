@@ -1,3 +1,5 @@
+// Har delat upp koden med kommentarer varje gång det händer något nytt
+
 // Namnöversättning från svenska till engelska
 const nameMap = {
   Solen: "sun",
@@ -11,40 +13,38 @@ const nameMap = {
   Neptunus: "neptune",
 };
 
-// Funktion som hämtar data från det externa API:et
+// Hämtar data och omvandlar det till json som sedan sparar det
 async function getData() {
   const response = await fetch("https://majazocom.github.io/Data/solaris.json");
   const data = await response.json();
   return data;
 }
 
-// Funktion som körs när sidan laddas
-// Hämta planetinformation från det externa API:et
+// Hämtar planetinformation från det externa API:et
+// Hämtar alla element med klassen "planet" och solen separat
+// Loopa igenom alla himlakroppar (planeter och solen) och sätter en eventlistener på varje
+// Hämtar namnet på den klickade himlakroppen från dess CSS-klass
+// Söker efter information om den klickade himlakroppen i den hämtade datan
+// Fyller popup-elementet med information om den klickade himlakroppen
+// Sätter en eventlistener på popup-elementet för att stänga det när användaren klickar på krysset
 async function run() {
-
   const planetInformation = await getData();
   console.log(planetInformation);
 
-  // Hämta alla element med klassen "planet" och solen separat
   const planets = document.querySelectorAll(".planet");
-  const sun = document.querySelector('.sun');
+  const sun = document.querySelector(".sun");
   const celestialBodies = [...planets, sun];
 
-  // Loopa igenom alla himlakroppar (planeter och solen) och sätter en eventlistener på varje
-  // Hämta namnet på den klickade himlakroppen från dess CSS-klass
   celestialBodies.forEach((planet) =>
     planet.addEventListener("click", async () => {
-      
       const planetName = planet.classList[1] || planet.classList[0];
 
-      // Sök efter information om den klickade himlakroppen i den hämtade datan
       const planetData = planetInformation.find(
         (p) => nameMap[p.name] === planetName
       );
 
       const popup = document.querySelector(".popup");
 
-      // Fyll popup-elementet med information om den klickade himlakroppen
       popup.innerHTML = `
         <div class = "flexContainer">
             <button class="closeButton" id="closeButton">&times;</button>
@@ -56,8 +56,12 @@ async function run() {
             <p class = "info distance">KM FRÅN SOLEN</br>${planetData.distance.toLocaleString()}</p>
             </div>
             <div class = "group 2">
-            <p class = "info maxTemp">MAX TEMPERATUR</br>${planetData.temp.day}</p>
-            <p class = "info minTemp">MIN TEMPERATUR</br>${planetData.temp.night}</p>
+            <p class = "info maxTemp">MAX TEMPERATUR</br>${
+              planetData.temp.day
+            }</p>
+            <p class = "info minTemp">MIN TEMPERATUR</br>${
+              planetData.temp.night
+            }</p>
             </div>
             <p class = "info moons">MÅNAR</br>${planetData.moons.join(", ")}</p>
         </div>
@@ -67,7 +71,6 @@ async function run() {
 
       popup.style.display = "flex";
 
-      // Sätt en eventlistener på popup-elementet för att stänga det när användaren klickar någonstans
       popup.addEventListener("click", function (event) {
         if (event.target === closeButton) {
           popup.style.display = "none";
@@ -77,10 +80,9 @@ async function run() {
   );
 }
 
-// Kör funktionen när sidan laddas
 run();
 
-// 
+// Funktionen skapar en ny div i .popup som genererar stjärnor och placerar ut dem slumpmäsigt
 function createStars() {
   const popup = document.querySelector(".popup");
   for (let i = 0; i < 100; i++) {
